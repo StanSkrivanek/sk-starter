@@ -8,11 +8,6 @@ Template app tech-stack:
 - [Superforms](https://superforms.rocks/) - Form validation
 - [Supabase](https://supabase.com/docs) - Backend - DB
 
-some links:
-<!-- - https://www.youtube.com/watch?v=ujbE0mzX-CU -->
-- <https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html>
-- <https://www.youtube.com/watch?v=oH_-6TyxVhI&t=2s>
-
 ---
 
 ## Step 01 - Supabase Local Development
@@ -211,3 +206,10 @@ create table public.profiles(
 ```
 
 [more info about  ](https://supabase.com/docs/guides/auth/managing-user-data)
+
+
+---
+some links:
+<!-- - https://www.youtube.com/watch?v=ujbE0mzX-CU -->
+- <https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html>
+- <https://www.youtube.com/watch?v=oH_-6TyxVhI&t=2s>
