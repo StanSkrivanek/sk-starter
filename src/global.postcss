@@ -1,0 +1,98 @@
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+	/* colors in HSL to work with extend opacity */
+	--clr-space: 180 2% 16%;
+
+	--clr-catSkillWhite: 69 21% 94%;
+
+	--clr-pavlova: 40 43% 73%;
+	--clr-main: 359 79% 58%;
+	--clr-sky: 197 75% 61%;
+	--clr-purple: 259 100% 50%;
+
+
+	--color-brand: var(--clr-space);
+	--color-text: var(--clr-space);
+	--color-background: var(--clr-catSkillWhite);
+
+}
+
+body {
+	@apply bg-bgColor text-blue-500 font-sans;
+}
+@layer base {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-bold text-textColor;
+	}
+
+	h1 {
+		@apply text-5xl;
+	}
+
+	h2 {
+		@apply text-4xl;
+	}
+
+	h3 {
+		@apply text-3xl;
+	}
+
+	h4 {
+		@apply text-2xl;
+	}
+
+	h5 {
+		@apply text-xl;
+	}
+
+	h6 {
+		@apply text-lg;
+	}
+
+	a {
+		@apply text-brand-base;
+	}
+	/* FORMS */
+
+	label {
+		@apply mb-1 block text-base font-medium text-slate-700;
+	}
+	input[type="text"]:not(.search):not(.line-item),
+	input[type="number"]:not(.line-item),
+	input[type="date"],
+	input[type="password"],
+	input[type="email"] {
+		@apply mb-4 h-8 w-full max-w-sm rounded-sm border p-2 text-base lg:h-12;
+	}
+
+	textarea {
+		@apply h-32 w-full rounded-sm border p-4 text-base;
+	}
+	.form-error-message {
+		@apply text-xs italic text-red-500;
+	}
+	.input-error {
+		@apply border-red-200;
+	}
+
+	/* SVG */
+	svg {
+		@apply stroke-current;
+	}
+}
