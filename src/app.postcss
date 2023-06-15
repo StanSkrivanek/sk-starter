@@ -1,13 +1,54 @@
-/* Write your global styles here, in PostCSS syntax */
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter-VariableFont_slnt,wght.ttf");
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	@apply font-bold;
+}
+
+h1 {
+	@apply text-5xl;
+}
+
+h2 {
+	@apply text-4xl;
+}
+
+h3 {
+	@apply text-3xl;
+}
+
+h4 {
+	@apply text-2xl;
+}
+
+h5 {
+	@apply text-xl;
+}
+
+h6 {
+	@apply text-lg;
+}
+
 @layer base {
 	:root {
-		--background: 0 0% 100%;
-		--foreground: 222.2 47.4% 11.2%;
+		--text-primary: hsla(209, 46%, 12%, 1.0);
+		--brand-primary: hsla(353, 93%, 58%, 1.0);
 
+		--cta-secondary: hsla(173, 93%, 58%, 1.0);
+		/* --foreground: hsla(222.2, 47.4% ,11.2%, 1); */
+		/* 
 		--muted: 210 40% 96.1%;
 		--muted-foreground: 215.4 16.3% 46.9%;
 
@@ -33,11 +74,37 @@
 		--destructive-foreground: 210 40% 98%;
 
 		--ring: 215 20.2% 65.1%;
-
-		--radius: 0.5rem;
+		
+		--radius: 0.5rem;  */
+	}
+	body {
+		@apply bg-primary;
+		color: var(--text-primary);
+		font-feature-settings: "rlig" 1, "calt" 1;
+	}
+	label {
+		@apply mb-1 block text-sm font-medium text-gray-700;
 	}
 
-	.dark {
+	input[type="text"]:not(.search):not(.line-item),
+	input[type="number"]:not(.line-item),
+	input[type="date"],
+	input[type="password"],
+	input[type="email"] {
+		@apply h-8 w-full max-w-sm rounded-sm border p-2 text-base lg:h-12;
+	}
+
+	textarea {
+		@apply h-32 w-full rounded-sm border p-4 text-base;
+	}
+	.form-error-message {
+		@apply text-xs italic text-red-500;
+	}
+	.input-error {
+		@apply border-red-200;
+	}
+
+	/* .dark {
 		--background: 224 71% 4%;
 		--foreground: 213 31% 91%;
 
@@ -68,36 +135,7 @@
 		--ring: 216 34% 17%;
 
 		--radius: 0.5rem;
-	}
+	} */
 }
 
-@layer base {
-	* {
-		@apply border-border;
-	}
-	body {
-		@apply bg-background text-foreground;
-		font-feature-settings: 'rlig' 1, 'calt' 1;
-	}
-	label {
-		@apply text-sm font-medium text-gray-700 block mb-1;
-	}
 
-	input[type='text']:not(.search):not(.line-item),
-	input[type='number']:not(.line-item),
-	input[type='date'],
-	input[type='password'],
-	input[type='email'] {
-		@apply h-8 lg:h-12 w-full rounded-sm border p-2 text-base max-w-sm;
-	}
-
-	textarea {
-		@apply h-32 w-full rounded-sm border p-4 text-base;
-	}
-	.form-error-message {
-		@apply text-red-500 text-xs italic;
-	}
-	.input-error {
-		@apply border-red-200;
-	}
-}

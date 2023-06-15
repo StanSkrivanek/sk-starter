@@ -213,3 +213,9 @@ some links:
 <!-- - https://www.youtube.com/watch?v=ujbE0mzX-CU -->
 - <https://www.typescriptlang.org/docs/handbook/jsdoc-supported-types.html>
 - <https://www.youtube.com/watch?v=oH_-6TyxVhI&t=2s>
+
+Optional plugins
+
+[classnames](https://www.npmjs.com/package/classnames)
+[dotenv](https://www.npmjs.com/package/dotenv)
+[Stripe](https://stripe.com/docs/stripe-js/react)

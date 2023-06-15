@@ -1,16 +1,21 @@
 /** @type {import('tailwindcss').Config}*/
-const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+module.exports = {
+	content: ["./src/**/*.{html,js,svelte,ts}"],
 
 	theme: {
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'sans-serif', 'system-ui']
+				sans: ["Inter", "sans-serif", "system-ui"]
+			},
+			backgroundColor: {
+				primary: "var(--brand-primary)"
+			},
+			colors: {
+				primary: "var(--brand-primary)",
+				secondary: "var(--brand-secondary)",
 			}
 		}
 	},
 
 	plugins: []
 };
-
-module.exports = config;
