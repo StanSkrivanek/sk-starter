@@ -73,17 +73,20 @@
 		return customStyle;
 	}
 
-	// function btnAnimation(isAnimated: boolean) {
-	// 	const condition = [isAnimated === true && "transition ease-in-out duration-150"];
-	// 	if (condition) {
-	// 		return condition.filter(Boolean);
-	// 	}
-	// }
-	// flex relative whitespace-nowrap rounded-sm px-5 py-2 font-sansSerif text-base font-medium lg:px-10 lg:py-3 lg:text-xl
+	function btnAnimation(isAnimated: boolean) {
+		const condition = [
+			isAnimated === true && "hover:shadow-lg transition-all duration-800 ease-in-out"
+		];
+		if (condition) {
+			return condition.filter(Boolean);
+		}
+	}
 </script>
 
 <button
-	class={`button ${btnSize(size)} ${btnTypes(btnType)} ${twCustom(customStyle)} `}
+	class={`button ${btnSize(size)} ${btnTypes(btnType)} ${twCustom(customStyle)} ${btnAnimation(
+		isAnimated
+	)}`}
 	class:isAnimated
 	on:click|preventDefault={() => onButtonClick()}>
 	{#if iconLeft}
@@ -101,7 +104,7 @@
 
 <style lang="postcss">
 	.button {
-		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase transition-all duration-300 ease-in-out;
+		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase;
 	}
 	/* .isAnimated {
     @apply translate-y-0  transition-all duration-300 ease-in-out;

@@ -1,58 +1,15 @@
-<script>
-	import Button from "$components/Button.svelte";
-	import Trash from "$components/icons/btn/Trash_btn.svelte";
-</script>
-
-<Button
-	size="xs"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
-<Button
-	size="sm"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
-<Button
-	size="md"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
-<Button
-	size="lg"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
-<Button
-	size="xl"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
-<Button
-	size="xxl"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
-
-<h3>Primary</h3>
-<!-- <Button
-							btnType="secondary"
-							size="xxl"
-							label="text"
-							isAnimated={false}
-							onButtonClick={() => {}}
-							iconLeft={Trash}
-							customStyle="flex justify-center items-center" /> -->
-<!-- <Button size="xs" label="delete" btnType="primary" isAnimated={false} onButtonClick={() => {}} iconLeft={Trash} /> -->
+<svelte:head>
+	<title>Home</title>
+</svelte:head>
+<nav class="flex justify-center py-5">
+	<ul>
+		<li>
+			<a href="/examples/button">buttons</a>
+		</li>
+	</ul>
+</nav>
+<main>
+	<div class="flex items-center justify-center p-10">
+		<h1>Sveltekit template with reusable components</h1>
+	</div>
+</main>
