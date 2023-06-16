@@ -53,4 +53,4 @@
 	isAnimated={false}
 	onButtonClick={() => {}}
 	iconLeft={Trash}
-	customStyle="flex justify-center items-center bg-indigo-500" />
+	customStyle="flex justify-center items-center bg-indigo-500 border border-teal-400 border-4 hover:bg-teal-300" />
