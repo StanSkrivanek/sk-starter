@@ -10,10 +10,9 @@ The `Button` component is used to trigger an action or event, such as submitting
 | **style**         | string   | yes      | set button style                |
 | **isAnimated**    | boolean  | yes      | button animation state          |
 | **onButtonClick** | function | yes      | trigger custom function         |
-| **height**        | string   |          | set size of button              |
 | **iconLeft**      | string   |          | set icon on left side of button |
 | **iconRight**     | string   |          | set icon on left side of button |
-| **className**     | string   |          |                                 |
+| **size**          | string   |          | set button size                 |
 
 ## Usage example
 
