@@ -1,6 +1,6 @@
 <script>
 	import Button from "$components/Button.svelte";
-
+	import Trash from "$components/icons/Trash.svelte";
 </script>
 
 <h1>Welcome to SvelteKit</h1>
@@ -13,6 +13,15 @@
 <label for="email">email</label>
 <input type="email" name="" id="" />
 <label for="name">name</label>
-<input type="text" name="name" id="" /><br>
+<input type="text" name="name" id="" /><br />
 
-<Button label="save" isAnimated={false} onButtonClick={() => {}} />
+<Button
+	label="delete"
+	style="primary"
+	height="short"
+	isAnimated={false}
+	onButtonClick={() => {}}
+	iconLeft={Trash} />
+<Button label="save" style="secondary" isAnimated={false} onButtonClick={() => {} }/>
+<Button label="save" style="outlined" isAnimated={false} onButtonClick={() => {}} />
+<Button label="save" style="textOnly" isAnimated={false} onButtonClick={() => {}} />

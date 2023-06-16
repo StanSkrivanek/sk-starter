@@ -12,17 +12,19 @@
 @tailwind utilities;
 :root {
 	/* colors in HSL to work with extend opacity */
+	/* GLOBAL cCOLORS */
+	--clr-primary: 359 79% 58%;
+	--clr-sky: 200 100% 50%;
 	--clr-space: 180 2% 16%;
-
 	--clr-catSkillWhite: 69 21% 94%;
-
 	--clr-pavlova: 40 43% 73%;
-	--clr-main: 359 79% 58%;
-	--clr-sky: 197 75% 61%;
+	/* --clr-sky: 197 75% 61%; */
 	--clr-purple: 259 100% 50%;
 
-
-	--color-brand: var(--clr-main);
+	/* COLORS USED IN Tailwind.config - theme/extend */
+	--color-brand: var(--clr-primary);
+	--color-primary: var(--clr-primary);
+	--color-secondary: var(--clr-sky);
 	--color-text: var(--clr-space);
 	--color-background: var(--clr-catSkillWhite);
 
@@ -95,4 +97,7 @@ body {
 	svg {
 		@apply stroke-current;
 	}
+	/* svg {
+    @apply fill-current
+  } */
 }

@@ -12,12 +12,15 @@ module.exports = {
 			},
 
 			colors: {
+				// allow set color with the alpha value (optional) e.g. `bg-brandcolor` mean opacity 1 or `bg-brandcolor/50` mean opacity 0.5
 				brandColor: "hsl(var(--color-brand) / <alpha-value>)",
 				textColor: "hsl(var(--color-text) / <alpha-value>)",
 				primaryColor: "hsl(var(--color-primary) / <alpha-value>)",
 				secondaryColor: "hsl(var(--color-secondary) / <alpha-value>)",
-				tertiaryColor: "hsl(var(--color-tertiary) / <alpha-value>)",
+
 				bgColor: "hsl(var(--color-background) / <alpha-value>)",
+				neutralColor: "hsl(var(--color-neutral) / <alpha-value>)",
+
 				brand: {
 					50: "#FEF6F6",
 					100: "#FDF1F1",

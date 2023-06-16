@@ -19,7 +19,8 @@
 </script>
 
 <button
-  class={`button ${className}`}
+  class={` flex relative whitespace-nowrap rounded-sm px-5 py-2 font-sansSerif text-base font-medium lg:px-10 lg:py-3 lg:text-xl ${className}`}
+  
   class:primary={style === 'primary'}
   class:secondary={style === 'secondary'}
   class:destructive={style === 'destructive'}
@@ -31,14 +32,14 @@
   on:click|preventDefault={() => onButtonClick()}
 >
   {#if iconLeft}
-    <div class="ml-2">
+    <div class="">
       <svelte:component this={iconLeft} />
     </div>
   {/if}
   {label}
   {#if iconRight}
-    <div class="ml-2">
-      <svelte:component this={iconRight} class="ml-2" />
+    <div class="">
+      <svelte:component this={iconRight} class="" />
     </div>
   {/if}
 </button>
@@ -48,16 +49,16 @@
     @apply translate-y-0 shadow-colored transition-all duration-300 ease-in-out;
   } */
   /* .isAnimated:hover {
-    @apply -translate-y-0.5 shadow-coloredHover;
+    @apply -translate-y-0.5 shadow-coloredHover; 
   } */
 
   .primary {
-    @apply bg-brandColor text-white;
+    @apply bg-primaryColor/90 text-white hover:bg-primaryColor;
   }
 
-  /* .secondary {
-    @apply bg-gallery text-daisyBush;
-  } */
+  .secondary {
+    @apply bg-secondaryColor/90 hover:bg-secondaryColor text-white;
+  }
 
   /* .destructive {
     @apply bg-scarlet text-goldenFizz;
@@ -74,4 +75,7 @@
   /* .short {
     @apply md:py-2;
   } */
+  .short {
+    @apply !py-1;
+  }
 </style>
