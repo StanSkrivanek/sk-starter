@@ -3,6 +3,7 @@
 	import { onMount } from "svelte";
 	export let btnType: "primary" | "secondary" | "destructive" | "outlined" | "textOnly" = "primary";
 	export let size: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" = "md";
+	export let shape: "base" | "rounded" | "pill" | "circle" = "rounded";
 	export let label: string;
 	export let isAnimated = true;
 	export let iconLeft: (new (...args: any[]) => SvelteComponent) | null = null;
@@ -14,6 +15,23 @@
 	// export const disabled: boolean = false;
 	// export let type: string = 'button';
 	let isPointerEnter = false;
+
+	// BUTTON SHAPE
+	function btnShape(shape: string) {
+		// let bsize = btnSize(size);
+		// console.log(bsize);
+		const conditions = [
+			shape === "base" && "rounded-none",
+			shape === "rounded" && "rounded",
+			shape === "pill" && "rounded-full",
+			shape === "circle" && (size === "xxl" || size === "xl" || size === "lg") && " rounded-full !px-3 !py-3",
+			shape === "circle" && (size === "md" || size === "sm" || size === "xs" ) && " rounded-full !px-2 !py-2",
+		
+		];
+		if (conditions) {
+			return conditions.filter(Boolean);
+		}
+	}
 
 	// BUTTON SIZE
 	function btnSize(size: string) {
@@ -127,21 +145,32 @@
 </script>
 
 <button
-	class={`button ${btnSize(size)} ${btnTypes(btnType)} ${twCustom(customStyle)} ${btnAnimation(
-		isAnimated
-	)}`}
+	class={`button ${btnSize(size)} ${btnShape(shape)} ${btnTypes(btnType)} ${twCustom(
+		customStyle
+	)} ${btnAnimation(isAnimated)}`}
 	on:click|preventDefault={() => onButtonClick()}
 	on:pointerenter={handlePointerEnter}
 	on:pointerleave={handlePointerLeave}
 	on:pointerdown={handlePointerLeave}
 	on:pointerup={handlePointerEnter}>
-	{#if iconLeft}
+	{#if iconLeft && !label}
+		<div class={` ${iconSize(size)}`}>
+			<svelte:component this={iconLeft} />
+		</div>
+	{:else if iconLeft && label}
 		<div class={`mr-1 ${iconSize(size)}`}>
 			<svelte:component this={iconLeft} />
 		</div>
 	{/if}
-	{label}
-	{#if iconRight}
+	{#if label !== ""}	
+		<span>{label}</span>
+	{/if}
+
+	{#if iconRight && !label}
+		<div class={` ${iconSize(size)}`}>
+			<svelte:component this={iconRight} />
+		</div>
+	{:else if iconRight && label}
 		<div class={`ml-1 ${iconSize(size)}`}>
 			<svelte:component this={iconRight} />
 		</div>
@@ -156,4 +185,7 @@
 	.btn-shadow {
 		box-shadow: rgba(0, 0, 0, 0.25) 2px 3px 4px;
 	}
+	/* .rounded {
+		@apply rounded-full w-0 h-0 mr-0 ml-0;
+	} */
 </style>
