@@ -26,7 +26,7 @@
 			return conditions.filter(Boolean);
 		}
 	}
-	
+
 	// BUTTON TYPE
 	function btnTypes(btnType: string) {
 		const condition = [
@@ -76,21 +76,22 @@
 	}
 
 	function btnAnimation(isAnimated: boolean) {
-		const condition = [
-			isAnimated === true && " transition-all duration-600 ease-in-out"
-		];
+		const condition = [isAnimated === true && " transition-all duration-600 ease-in-out"];
 		if (condition) {
 			return condition.filter(Boolean);
 		}
 	}
-	let elem = {} as HTMLButtonElement;
-	// Handler for button hover 
-	function handlePointerEnter(this: any,  ev: any) {
+	// TODO: add disabled button
+	// TODO: check docs for setPointerCapture(ev.pointerId) and releasePointerCapture(ev.pointerId)
+	// Handler for button hover
+	function handlePointerEnter(this: any, ev: any) {
 		isPointerEnter = true;
+		this?.setPointerCapture(ev.pointerId);
 		this?.classList.add("btn-shadow");
 	}
 	function handlePointerLeave(this: any, ev: any) {
 		isPointerEnter = false;
+		this?.releasePointerCapture(ev.pointerId);
 		this?.classList.remove("btn-shadow");
 	}
 </script>
@@ -103,8 +104,7 @@
 	on:pointerenter={handlePointerEnter}
 	on:pointerleave={handlePointerLeave}
 	on:pointerdown={handlePointerLeave}
-	on:pointerup={handlePointerEnter}
-	>
+	on:pointerup={handlePointerEnter}>
 	{#if iconLeft}
 		<div class={`mr-1 ${iconSize(size)}`}>
 			<svelte:component this={iconLeft} />
@@ -126,5 +126,4 @@
 	.btn-shadow {
 		box-shadow: rgba(0, 0, 0, 0.25) 2px 3px 5px;
 	}
-
 </style>
