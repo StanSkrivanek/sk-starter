@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from "$components/Button.svelte";
+	import Cogwheel from "$components/icons/btn/Cogwheel.svelte";
 	import Trash from "$components/icons/btn/Trash_btn.svelte";
-
 	// function PointerEterHandler() {
 	// 	throw new Error("Function not implemented.");
 	// }
@@ -13,13 +13,7 @@
 	// $: console.log("THIS",thisBtn);
 </script>
 
-<Button
-	size="xs"
-	label="delete"
-	btnType="outlined"
-	isAnimated={false}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
+<Button size="xs" label="delete" btnType="outlined" isAnimated={false} onButtonClick={() => {}} />
 <Button
 	size="sm"
 	label="delete"
@@ -30,14 +24,14 @@
 <Button
 	size="md"
 	label="delete"
-	btnType="outlined"
+	btnType="secondary"
 	isAnimated={false}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
 <Button
 	size="lg"
 	label="delete"
-	btnType="outlined"
+	btnType="primary"
 	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
@@ -51,13 +45,23 @@
 
 <Button
 	size="xxl"
-	label="delete"
+	label=""
 	btnType="outlined"
 	onButtonClick={() => {}}
-	iconLeft={Trash}
 	isAnimated={true}
 	resize={true}
-/>
+	iconLeft={Cogwheel}
+	shape="circle" />
+
+<Button
+	size="xxl"
+	label=""
+	btnType="outlined"
+	onButtonClick={() => {}}
+	isAnimated={true}
+	resize={true}
+	iconRight={Cogwheel}
+	shape="circle" />
 
 <Button
 	btnType="primary"
