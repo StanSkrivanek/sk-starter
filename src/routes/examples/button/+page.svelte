@@ -57,6 +57,7 @@
 	size="xxl"
 	label=""
 	btnType="outlined"
+	color="secondary"
 	onButtonClick={() => {}}
 	isAnimated={true}
 	resize={true}

@@ -4,6 +4,7 @@
 	export let btnType: "primary" | "secondary" | "destructive" | "outlined" | "textOnly" = "primary";
 	export let size: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" = "md";
 	export let shape: "base" | "rounded" | "pill" | "circle" = "rounded";
+	export let color: "primary" | "secondary" | "soft" | "cta" | "textOnly" = "primary";
 	export let label: string;
 	export let isAnimated = true;
 	export let iconLeft: (new (...args: any[]) => SvelteComponent) | null = null;
@@ -18,15 +19,16 @@
 
 	// BUTTON SHAPE
 	function btnShape(shape: string) {
-		// let bsize = btnSize(size);
-		// console.log(bsize);
 		const conditions = [
 			shape === "base" && "rounded-none",
 			shape === "rounded" && "rounded",
 			shape === "pill" && "rounded-full",
-			shape === "circle" && (size === "xxl" || size === "xl" || size === "lg") && " rounded-full !px-3 !py-3",
-			shape === "circle" && (size === "md" || size === "sm" || size === "xs" ) && " rounded-full !px-2 !py-2",
-		
+			shape === "circle" &&
+				(size === "xxl" || size === "xl" || size === "lg") &&
+				" rounded-full !px-3 !py-3",
+			shape === "circle" &&
+				(size === "md" || size === "sm" || size === "xs") &&
+				" rounded-full !px-2 !py-2"
 		];
 		if (conditions) {
 			return conditions.filter(Boolean);
@@ -71,6 +73,7 @@
 		];
 		return result[condition.indexOf(true)];
 	}
+
 
 	// BUTTON ICON SIZE
 	function iconSize(size: string) {
@@ -145,7 +148,7 @@
 </script>
 
 <button
-	class={`button ${btnSize(size)} ${btnShape(shape)} ${btnTypes(btnType)} ${twCustom(
+	class={`button ${btnSize(size)} ${btnShape(shape)} ${btnTypes(btnType)}  ${twCustom(
 		customStyle
 	)} ${btnAnimation(isAnimated)}`}
 	on:click|preventDefault={() => onButtonClick()}
@@ -162,7 +165,7 @@
 			<svelte:component this={iconLeft} />
 		</div>
 	{/if}
-	{#if label !== ""}	
+	{#if label !== ""}
 		<span>{label}</span>
 	{/if}
 
