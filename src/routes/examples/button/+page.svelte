@@ -1,6 +1,10 @@
 <script>
 	import Button from "$components/Button.svelte";
 	import Trash from "$components/icons/btn/Trash_btn.svelte";
+
+	function PointerEterHandler() {
+		throw new Error("Function not implemented.");
+	}
 </script>
 
 <Button
@@ -44,13 +48,14 @@
 	btnType="outlined"
 	isAnimated={true}
 	onButtonClick={() => {}}
-	iconLeft={Trash} />
+	iconLeft={Trash}
+	/>
 
-    <Button
+<Button
 	btnType="primary"
 	size="xxl"
 	label="text"
-	isAnimated={false}
+	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash}
 	customStyle="flex justify-center items-center bg-indigo-500 border border-teal-400 border-4 hover:bg-teal-300" />

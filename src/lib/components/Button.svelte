@@ -10,6 +10,7 @@
 	export let customStyle: "" | string = "";
 	// export const disabled: boolean = false;
 	// export let type: string = 'button';
+	let isPointerEnter = false;
 
 	// BUTTON SIZE
 	function btnSize(size: string) {
@@ -25,6 +26,7 @@
 			return conditions.filter(Boolean);
 		}
 	}
+	
 	// BUTTON TYPE
 	function btnTypes(btnType: string) {
 		const condition = [
@@ -75,11 +77,21 @@
 
 	function btnAnimation(isAnimated: boolean) {
 		const condition = [
-			isAnimated === true && "hover:shadow-lg transition-all duration-800 ease-in-out"
+			isAnimated === true && " transition-all duration-600 ease-in-out"
 		];
 		if (condition) {
 			return condition.filter(Boolean);
 		}
+	}
+	let elem = {} as HTMLButtonElement;
+	// Handler for button hover 
+	function handlePointerEnter(this: any,  ev: any) {
+		isPointerEnter = true;
+		this?.classList.add("btn-shadow");
+	}
+	function handlePointerLeave(this: any, ev: any) {
+		isPointerEnter = false;
+		this?.classList.remove("btn-shadow");
 	}
 </script>
 
@@ -87,8 +99,12 @@
 	class={`button ${btnSize(size)} ${btnTypes(btnType)} ${twCustom(customStyle)} ${btnAnimation(
 		isAnimated
 	)}`}
-	class:isAnimated
-	on:click|preventDefault={() => onButtonClick()}>
+	on:click|preventDefault={() => onButtonClick()}
+	on:pointerenter={handlePointerEnter}
+	on:pointerleave={handlePointerLeave}
+	on:pointerdown={handlePointerLeave}
+	on:pointerup={handlePointerEnter}
+	>
 	{#if iconLeft}
 		<div class={`mr-1 ${iconSize(size)}`}>
 			<svelte:component this={iconLeft} />
@@ -106,10 +122,9 @@
 	.button {
 		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase;
 	}
-	/* .isAnimated {
-    @apply translate-y-0  transition-all duration-300 ease-in-out;
-  } */
-	/* .isAnimated:hover {
-    @apply -translate-y-0.5 transition-all duration-300 ease-in-out;; 
-  } */
+
+	.btn-shadow {
+		box-shadow: rgba(0, 0, 0, 0.25) 2px 3px 5px;
+	}
+
 </style>
