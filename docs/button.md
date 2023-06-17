@@ -15,12 +15,14 @@ The `Button` component is used to trigger an action or event, such as submitting
 | **isAnimated**    | boolean  | in progress | button animation state                    | for now animation is set on All                                        |
 | **customStyle**   | string   |             | allow to inject extra Tailwind classes    |                                                                        |
 | **resize**        | boolean  |             | allow button to be responsive to viewport | true, false                                                            |
+| **shape**         | string   |             | allow change button shape                 | base , rounded, pill, circle                                           |
 
 - All buttons have a default size of `md` and a default style of `primary`.
 - The `btnType` prop can be used to change the style of the button.
 - The `size` prop can be used to change the size of the button.
 - The `customStyle` prop can be used to inject extra Tailwind classes to individual button if you need to do so.
 - The `resize` prop can be used to make the button responsive to viewport.
+- The `shape` prop can be used to change the shape of the button. Default `base` is standard rectangle if not set in `customStyle` otherwise. The shape `circle` should be used if only icon is used in button. The shape `pill` should be used if icon and/or label is used in button. Icons can be used on left and/or right side of button or on both sides.
 
 ## Usage example
 
@@ -120,3 +122,18 @@ With approach above we can't use `width` and `height` props in `iconLeft` and `i
 // Responsive button
 <Button label="save" btnType="secondary" isAnimated={true} onButtonClick={() => {}} resize={true} />
 ```
+
+**Change button shape**
+
+```js
+// Change button shape
+<Button
+	label="save"
+	btnType="secondary"
+	isAnimated={true}
+	onButtonClick={() => {}}
+	resize={true}
+	shape="pill"
+	iconLeft={Done}
+	iconRight={Smile} //(optional)
+/>

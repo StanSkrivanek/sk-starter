@@ -64,6 +64,17 @@
 	shape="circle" />
 
 <Button
+	size="xxl"
+	label="label"
+	btnType="outlined"
+	onButtonClick={() => {}}
+	isAnimated={true}
+	resize={true}
+	iconRight={Cogwheel}
+	iconLeft={Cogwheel}
+	shape="circle" />
+
+<Button
 	btnType="primary"
 	size="xxl"
 	label="text"
