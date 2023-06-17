@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { SvelteComponent } from "svelte"; // for adding icons to button
+	import { onMount } from "svelte";
 	export let btnType: "primary" | "secondary" | "destructive" | "outlined" | "textOnly" = "primary";
 	export let size: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" = "md";
 	export let label: string;
@@ -7,6 +8,8 @@
 	export let iconLeft: (new (...args: any[]) => SvelteComponent) | null = null;
 	export let iconRight: (new (...args: any[]) => SvelteComponent) | null = null;
 	export let onButtonClick: () => void;
+	export let resize: boolean = false;
+	// export let resize: () => void = () => {};
 	export let customStyle: "" | string = "";
 	// export const disabled: boolean = false;
 	// export let type: string = 'button';
@@ -84,16 +87,43 @@
 	// TODO: add disabled button
 	// TODO: check docs for setPointerCapture(ev.pointerId) and releasePointerCapture(ev.pointerId)
 	// Handler for button hover
-	function handlePointerEnter(this: any, ev: any) {
+	function handlePointerEnter(this: HTMLButtonElement, ev: any) {
 		isPointerEnter = true;
 		this?.setPointerCapture(ev.pointerId);
 		this?.classList.add("btn-shadow");
 	}
-	function handlePointerLeave(this: any, ev: any) {
+	function handlePointerLeave(this: HTMLButtonElement, ev: any) {
 		isPointerEnter = false;
 		this?.releasePointerCapture(ev.pointerId);
 		this?.classList.remove("btn-shadow");
 	}
+
+	// change button size on viewport resize
+	export function handleResize() {
+		if (resize) {
+			if (window.innerWidth < 640) {
+				size = "xs";
+			} else if (window.innerWidth < 768) {
+				size = "sm";
+			} else if (window.innerWidth < 1024) {
+				size = "md";
+			} else if (window.innerWidth < 1280) {
+				size = "lg";
+			} else if (window.innerWidth < 1536) {
+				size = "xl";
+			} else {
+				size = "xxl";
+			}
+		}
+	}
+
+	onMount(() => {
+		resize && handleResize();
+		window.addEventListener("resize", handleResize);
+		return () => {
+			window.removeEventListener("resize", handleResize);
+		};
+	});
 </script>
 
 <button
@@ -124,6 +154,6 @@
 	}
 
 	.btn-shadow {
-		box-shadow: rgba(0, 0, 0, 0.25) 2px 3px 5px;
+		box-shadow: rgba(0, 0, 0, 0.25) 2px 3px 4px;
 	}
 </style>

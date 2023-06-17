@@ -1,10 +1,16 @@
-<script>
+<script lang="ts">
 	import Button from "$components/Button.svelte";
 	import Trash from "$components/icons/btn/Trash_btn.svelte";
 
-	function PointerEterHandler() {
-		throw new Error("Function not implemented.");
-	}
+	// function PointerEterHandler() {
+	// 	throw new Error("Function not implemented.");
+	// }
+
+	// function handleResize() {
+	// 	throw new Error("Function not implemented.");
+	// }
+	// let thisBtn: any;
+	// $: console.log("THIS",thisBtn);
 </script>
 
 <Button
@@ -32,24 +38,26 @@
 	size="lg"
 	label="delete"
 	btnType="outlined"
-	isAnimated={false}
+	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
 <Button
 	size="xl"
 	label="delete"
 	btnType="outlined"
-	isAnimated={false}
+	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
+
 <Button
 	size="xxl"
 	label="delete"
 	btnType="outlined"
-	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash}
-	/>
+	isAnimated={true}
+	resize={true}
+/>
 
 <Button
 	btnType="primary"
