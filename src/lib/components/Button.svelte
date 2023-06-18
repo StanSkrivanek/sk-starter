@@ -61,9 +61,9 @@
 		];
 		const result = [
 			// primary
-			"rounded bg-brandColor/90 text-white hover:bg-brandColor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+			"rounded bg-brandColor text-white  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
 			// secondary
-			"bg-secondaryColor/90 text-white hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+			"bg-secondaryColor text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
 			// destructive
 			"bg-red-600 text-white hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
 			// outlined
@@ -73,7 +73,6 @@
 		];
 		return result[condition.indexOf(true)];
 	}
-
 
 	// BUTTON ICON SIZE
 	function iconSize(size: string) {
@@ -112,12 +111,21 @@
 		isPointerEnter = true;
 		this?.setPointerCapture(ev.pointerId);
 		this?.classList.add("btn-shadow");
+		this.style.opacity = "0.9";
 	}
 	function handlePointerLeave(this: HTMLButtonElement, ev: any) {
 		isPointerEnter = false;
 		this?.releasePointerCapture(ev.pointerId);
 		this?.classList.remove("btn-shadow");
+		this.style.opacity = "1";
 	}
+
+	// Handler for button click
+	// function handlePointerDown(this: HTMLButtonElement, ev: any) {
+	// 	if (isPointerEnter) {
+	// 		this?.classList.remove("btn-shadow");
+	// 	}
+	// }
 
 	// change button size on viewport resize
 	export function handleResize() {
@@ -182,7 +190,7 @@
 
 <style lang="postcss">
 	.button {
-		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase; 
+		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase;
 	}
 
 	.btn-shadow {

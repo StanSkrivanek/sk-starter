@@ -31,17 +31,11 @@
 <Button
 	size="lg"
 	label="delete"
-	btnType="primary"
+	btnType="secondary"
 	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
-<Button
-	size="xl"
-	label="delete"
-	btnType="primary"
-	isAnimated={true}
-	onButtonClick={() => {}}
-	iconLeft={Trash} />
+<Button size="xl" label="delete" isAnimated={true} onButtonClick={() => {}} iconLeft={Trash} />
 
 <Button
 	size="xxl"
