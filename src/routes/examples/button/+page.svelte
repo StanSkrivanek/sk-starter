@@ -24,7 +24,7 @@
 <Button
 	size="md"
 	label="delete"
-	btnType="secondary"
+	btnType="primary"
 	isAnimated={false}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
@@ -38,26 +38,26 @@
 <Button
 	size="xl"
 	label="delete"
-	btnType="outlined"
+	btnType="primary"
 	isAnimated={true}
 	onButtonClick={() => {}}
 	iconLeft={Trash} />
 
 <Button
 	size="xxl"
-	label=""
+	label="custom"
 	btnType="outlined"
 	onButtonClick={() => {}}
 	isAnimated={true}
 	resize={true}
 	iconLeft={Cogwheel}
-	shape="circle" />
+	shape="circle"
+	customStyle=" text-white bg-border border-2 border-primaryColor hover:border-brandColor/90 hover:bg-indigo-500 bg-indigo-300  " />
 
 <Button
 	size="xxl"
 	label=""
 	btnType="outlined"
-	color="secondary"
 	onButtonClick={() => {}}
 	isAnimated={true}
 	resize={true}

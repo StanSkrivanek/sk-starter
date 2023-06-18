@@ -4,42 +4,107 @@ The `Button` component is used to trigger an action or event, such as submitting
 
 ## Props
 
-| Prop              | Type     | required    | Description                               | Options                                                                |
-| ----------------- | -------- | ----------- | ----------------------------------------- | ---------------------------------------------------------------------- |
-| **label**         | string   | yes         | custom label text                         |                                                                        |
-| **onButtonClick** | function | yes         | trigger custom function                   |                                                                        |
-| **size**          | string   |             | set button size                           | xs, sm, md, lg, xl, xxl (base: md)                                     |
-| **btnType**       | string   |             | set button style                          | primary , secondary , destructive , outlined, textOnly (base: primary) |
-| **iconLeft**      | string   |             | set icon on left side of button           |                                                                        |
-| **iconRight**     | string   |             | set icon on left side of button           |                                                                        |
-| **isAnimated**    | boolean  | in progress | button animation state                    | for now animation is set on All                                        |
-| **customStyle**   | string   |             | allow to inject extra Tailwind classes    |                                                                        |
-| **resize**        | boolean  |             | allow button to be responsive to viewport | true, false                                                            |
-| **shape**         | string   |             | allow change button shape                 | base , rounded, pill, circle                                           |
+| Prop              | Type     | required | Description                               | Options                                                 |
+| ----------------- | -------- | -------- | ----------------------------------------- | ------------------------------------------------------- |
+| **label**         | string   | yes      | custom label text                         |                                                         |
+| **onButtonClick** | function | yes      | trigger custom function                   |                                                         |
+| **size**          | string   |          | set button size                           | xs, sm, md, lg, xl, xxl (base: md)                      |
+| **btnType**       | string   |          | set button style                          | primary , secondary, outlined, textOnly (init: primary) |
+| **iconLeft**      | string   |          | set icon on left side of button           |                                                         |
+| **iconRight**     | string   |          | set icon on left side of button           |                                                         |
+| **isAnimated**    | boolean  |          | allow button custom animations            |                                                         |
+| **customStyle**   | string   |          | allow to inject extra Tailwind classes    |                                                         |
+| **resize**        | boolean  |          | allow button to be responsive to viewport | true, false                                             |
+| **shape**         | string   |          | allow change button shape                 | base , rounded, pill, circle                            |
 
 - All buttons have a default size of `md` and a default style of `primary`.
-- The `btnType` prop can be used to change the style of the button.
+- The `label` prop is used to set the button label and tis prop is mandatory.
+- The prop `onButtonClick` is used to trigger a custom functions and this prop is mandatory.
 - The `size` prop can be used to change the size of the button.
+- The `btnType` prop can be used to set button importance. Initial is `primary` if not set otherwise. THe `primary` , `outlined` and `textOnly` buttons will have primary (brand) color. The `secondary` button will have secondary color. To change the color of the button you can always use `customStyle` prop or set values in `tailwind.config.cjs`.
+- The props `iconLeft` and `iconRight` can be used to set icon on left and/or right side of button. The icon used in button should have set `width` and `height` to `100%` to make it responsive based on button size.
 - The `customStyle` prop can be used to inject extra Tailwind classes to individual button if you need to do so.
+- The `isAnimated` prop can be used to allow button custom animations.
 - The `resize` prop can be used to make the button responsive to viewport.
 - The `shape` prop can be used to change the shape of the button. Default `base` is standard rectangle if not set in `customStyle` otherwise. The shape `circle` should be used if only icon is used in button. The shape `pill` should be used if icon and/or label is used in button. Icons can be used on left and/or right side of button or on both sides.
 
+## CSS color variables and tailwind.config.cjs
+
+An example color settings in `globas.postcss` or `app.css` _(depend on your preferences)_
+
+```js
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+	/* colors in HSL to work with extend opacity */
+	/* GLOBAL COLORS  VARIABLES*/
+	--clr-primary: 359 79% 58%;
+	--clr-sky: 200 100% 50%;
+	--clr-space: 180 2% 16%;
+	--clr-catSkillWhite: 69 21% 94%;
+	--clr-pavlova: 40 43% 73%;
+	--clr-sky: 197 75% 61%;
+	--clr-purple: 259 100% 50%;
+
+	/* COLORS USED IN Tailwind.config - theme/extend */
+	--color-brand: var(--clr-primary);
+	--color-primary: var(--clr-primary);
+	--color-secondary: var(--clr-sky);
+	--color-text: var(--clr-space);
+	--color-background: var(--clr-catSkillWhite);
+
+}
+```
+
+An example using color variables in `tailwind.config.cjs` settings
+
+```js
+module.exports = {
+	theme: {
+		extend: {
+			colors: {
+				// allow set color with the alpha value (optional) e.g. `bg-brandcolor` mean opacity 100% or `bg-brandcolor/50` mean opacity 50%
+				brandColor: "hsl(var(--color-brand) / <alpha-value>)",
+				secondaryColor: "hsl(var(--color-secondary) / <alpha-value>)",
+				textColor: "hsl(var(--color-text) / <alpha-value>)",
+
+				primaryColor: "hsl(var(--clr-purple) / <alpha-value>)",
+
+				bgColor: "hsl(var(--color-background) / <alpha-value>)",
+				neutralColor: "hsl(var(--clr-pavlova) / <alpha-value>)"
+			}
+		}
+	}
+};
+```
+
 ## Usage example
 
-**Basic usage**
+### Basic Button
+
+The `label` prop is used to set the button label and `onButtonClick` is used to trigger a custom functions and these props are mandatory.
 
 ```js
 // Mandatory props
 <Button label="save" onButtonClick={() => {}} />
 ```
 
-**Add button label, size and type**
+---
+
+### Add Button label, size and type
+
+The `size` prop can be used to change the size of the button. The `btnType` prop can be used to set button importance. Initial is `primary` if not set otherwise. THe `primary` , `outlined` and `textOnly` buttons will have primary (brand) color. The `secondary` button will have secondary color. To change the color of the button you can always use `customStyle` prop or set values in `tailwind.config.cjs`.
 
 ```js
 <Button size="sm" label="delete" btnType="textOnly" onButtonClick={() => {}} />
 ```
 
-**Add button icon**
+---
+
+### Add Button icon
+
+The props `iconLeft` and `iconRight` can be used to set icon on left and/or right side of button.
 
 ```js
 <Button label="delete" btnType="textOnly" iconLeft={Trash} onButtonClick={() => {}} />
@@ -88,7 +153,9 @@ With approach above we can't use `width` and `height` props in `iconLeft` and `i
 
 ---
 
-**Add functions**
+### Add Button functions
+
+The prop `onButtonClick` is used to trigger a custom functions and this prop is mandatory.
 
 ```js
 <Button
@@ -102,10 +169,14 @@ With approach above we can't use `width` and `height` props in `iconLeft` and `i
 />
 ```
 
-**Custom style Injection**
+---
+
+### Inject Custom style
+
+The `customStyle` prop can be used to inject extra Tailwind classes to individual button if you need to do so.
 
 ```js
-// cutom style Insjection
+// custom style Insjection
 <Button
 	size="sm"
 	label="text"
@@ -116,14 +187,22 @@ With approach above we can't use `width` and `height` props in `iconLeft` and `i
 />
 ```
 
-**Responsive button**
+---
+
+### Set Button resize functionality
+
+The `resize` prop can be used to make the button responsive to viewport.
 
 ```js
 // Responsive button
 <Button label="save" btnType="secondary" isAnimated={true} onButtonClick={() => {}} resize={true} />
 ```
 
-**Change button shape**
+---
+
+### Change button shape
+
+The `shape` prop can be used to change the shape of the button. Default `base` is standard rectangle if not set in `customStyle` otherwise. The shape `circle` should be used if only icon is used in button. The shape `pill` should be used if icon and/or label is used in button. Icons can be used on left and/or right side of button or on both sides.
 
 ```js
 // Change button shape
@@ -137,3 +216,4 @@ With approach above we can't use `width` and `height` props in `iconLeft` and `i
 	iconLeft={Done}
 	iconRight={Smile} //(optional)
 />
+```

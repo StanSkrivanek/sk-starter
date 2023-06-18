@@ -4,7 +4,7 @@
 	export let btnType: "primary" | "secondary" | "destructive" | "outlined" | "textOnly" = "primary";
 	export let size: "xs" | "sm" | "md" | "lg" | "xl" | "xxl" = "md";
 	export let shape: "base" | "rounded" | "pill" | "circle" = "rounded";
-	export let color: "primary" | "secondary" | "soft" | "cta" | "textOnly" = "primary";
+	// export let color: "primary" | "secondary" | "soft" | "cta" | "textOnly" = "primary";
 	export let label: string;
 	export let isAnimated = true;
 	export let iconLeft: (new (...args: any[]) => SvelteComponent) | null = null;
@@ -61,13 +61,13 @@
 		];
 		const result = [
 			// primary
-			"rounded bg-primaryColor/90 text-white hover:bg-primaryColor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
+			"rounded bg-brandColor/90 text-white hover:bg-brandColor focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
 			// secondary
 			"bg-secondaryColor/90 text-white hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
 			// destructive
 			"bg-red-600 text-white hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600",
 			// outlined
-			"border border-brandColor text-brandColor hover:bg-brandColor   hover:text-white",
+			"border border-brandColor text-brandColor hover:bg-brandColor hover:text-white",
 			// textOnly
 			"bg-transparent px-0 text-brandColor no-underline hover:underline"
 		];
@@ -100,7 +100,7 @@
 	}
 
 	function btnAnimation(isAnimated: boolean) {
-		const condition = [isAnimated === true && " transition-all duration-600 ease-in-out"];
+		const condition = [isAnimated === true && "transition-all duration-600 ease-in-out"];
 		if (condition) {
 			return condition.filter(Boolean);
 		}
@@ -182,7 +182,7 @@
 
 <style lang="postcss">
 	.button {
-		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase;
+		@apply inline-flex transform items-center justify-center whitespace-nowrap uppercase; 
 	}
 
 	.btn-shadow {
